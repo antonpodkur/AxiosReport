@@ -1,9 +1,13 @@
 import axios from 'axios';
+import {useState, UseEffect} from 'react';
 
 import './App.css';
 
 
 function App() {
+
+  const [type, setType] = useState('Choose something :-)');
+  const [text, setText] = useState(undefined);
 
   // Axios request functions
 
@@ -11,6 +15,8 @@ function App() {
     try {
       const data = await axios.get('http://localhost:3333/posts/')
       console.log(data.data);
+      setType('Axios/Get');
+      setText(JSON.stringify(data.data, null, 2));
     }catch(e){
       console.error(e.message);
     }
@@ -21,19 +27,19 @@ function App() {
       const post = {title: 'axios test post', description: 'axios test post. I hope it was sent successfuly'};
       const result = await axios.post('http://localhost:3333/posts/', post);
       console.log(result.data);
-    }catch(e){console.error(e.mesasge)}
+    }catch(e){console.error(e.message)}
   };
 
   async function AxiosDelete(){
     try{
-      const result = await axios.delete('http://localhost:3333/posts/60895d53176b2140ec1b9c8b')
+      const result = await axios.delete('http://localhost:3333/posts/60895307176b2140ec1b9c88')
       console.log(result.data);
     }catch(e) {console.error(e.message)}
   };
 
   async function AxiosPatch(){
     try{
-      const result = await axios.patch('http://localhost:3333/posts/60895c73176b2140ec1b9c8a',{title:'Whoops it is not the last one2 '});
+      const result = await axios.patch('http://localhost:3333/posts/60896930176b2140ec1b9c8c',{title:'Whoops it is not the last one2 '});
       console.log(result.data);
     }
     catch(e) {console.error(e.message)}
@@ -66,34 +72,67 @@ function App() {
     }catch(e) {console.error(e.message)}
   }
 
+  async function FetchDelete(){
+    try{
+      const response = await fetch('http://localhost:3333/posts/60895c73176b2140ec1b9c8a',{method:'DELETE'});
+      const json = await response.json();
+      console.log(json);
+    }catch(e){console.error(e.message)}
+  }
+
+  async function FetchPatch(){
+    try{
+      const response = await fetch('http://localhost:3333/posts/60896930176b2140ec1b9c8c',{
+        method: 'PATCH',
+        body: JSON.stringify({title:'Whoops it is not the last one'}),
+        headers:{
+          'Content-type': 'application/json; charset=UTF-8'
+        }
+      });
+      const json = await response.json();
+      console.log(json);
+    }catch(e){console.error(e.message)}
+  };
+
+
+
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500">
       <div className="flex flex-col items-center text-center text-white bg-black py-5 w-5/6 mx-auto rounded mt-5">
         <header>
-          <h1 className="text-5xl font-bold header">Axios Report</h1>
-          <h2 className="pt-2 text-2xl casual">Axios vs Fetch</h2>
+          <h1 className="text-5xl font-bold header text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500">Axios Report</h1>
+          <h2 className="pt-2 text-2xl casual text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500">Axios vs Fetch</h2>
         </header>
       </div>
 
       <div className="pt-20 grid grid-cols-2">
         <div className="flex flex-col items-center text-center">
           <h2 className="text-2xl font-bold header">Axios</h2>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping" onClick={AxiosGet}>Send GET request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping" onClick={AxiosPost}>Send POST request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping" onClick={AxiosDelete}>Send DELETE request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping" onClick={AxiosPatch}>Send PATCH request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl casual jumping" onClick={AxiosGet}>Send GET request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl casual jumping" onClick={AxiosPost}>Send POST request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl casual jumping" onClick={AxiosDelete}>Send DELETE request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl casual jumping" onClick={AxiosPatch}>Send PATCH request</button>
         </div>
         <div className="flex flex-col items-center text-center">
           <h2 className="text-2xl font-bold header">Fetch</h2>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping" onClick={FetchGet}>Send GET request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping" onClick={FetchPost}>Send POST request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping">Send DELETE request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping">Send PATCH request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl casual jumping" onClick={FetchGet}>Send GET request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl casual jumping" onClick={FetchPost}>Send POST request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl casual jumping" onClick={FetchDelete}>Send DELETE request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl casual jumping" onClick={FetchPatch}>Send PATCH request</button>
         </div>
       </div>
+      <div className="flex flex-col items-center w-5/6 text-white bg-black mx-auto my-10 rounded-xl ">
+        <div className="pt-5 font-bold text-xl">
+          {type}
+        </div>
+        <div className="w-5/6 py-5 text-lg">
+        <pre>{text}</pre>
+        </div>
+      </div>
+      
       <div className="flex flex-col text-center text-white bg-black py-5 w-5/6 mx-auto rounded mt-auto mb-5">
-        <div className="pl-10 casual">by Anton Podkur, IV-92</div> 
+        <div className="pl-10 casual text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500">by Anton Podkur, IV-92</div> 
       </div>
       
     </div>
