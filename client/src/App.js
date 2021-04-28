@@ -1,10 +1,11 @@
-// import {UseState, UseEffect} from 'react';
 import axios from 'axios';
+
 import './App.css';
 
 
 function App() {
-  // const [result, setResult] = UseState(undefined);
+
+  // Axios request functions
 
   async function AxiosGet(){
     try {
@@ -25,22 +26,50 @@ function App() {
 
   async function AxiosDelete(){
     try{
-      const result = await axios.delete('http://localhost:3333/posts/608938d2176b2140ec1b9c84')
+      const result = await axios.delete('http://localhost:3333/posts/60895d53176b2140ec1b9c8b')
       console.log(result.data);
     }catch(e) {console.error(e.message)}
   };
 
   async function AxiosPatch(){
     try{
-      const result = await axios.patch('http://localhost:3333/posts/60893a1a176b2140ec1b9c85',{title:'Whoops it is not the last one'});
+      const result = await axios.patch('http://localhost:3333/posts/60895c73176b2140ec1b9c8a',{title:'Whoops it is not the last one2 '});
       console.log(result.data);
     }
     catch(e) {console.error(e.message)}
   };
 
+
+  // Fetch request functions
+
+  async function FetchGet(){
+    try{
+      const response = await fetch('http://localhost:3333/posts/');
+      const data = await response.json();
+      console.log(data);
+    }catch(e){
+      console.log(e.message);
+    }
+  };
+
+  async function FetchPost(){
+    try{
+      const response = await fetch('http://localhost:3333/posts/', {
+        method: 'POST',
+        body: JSON.stringify({title: 'axios test post', description: 'axios test post. I hope it was sent successfuly'}), 
+        headers: {
+          'Content-Type': 'application/json'
+        }    
+      });
+      const json = await response.json();
+      console.log(json);
+    }catch(e) {console.error(e.message)}
+  }
+
+
   return (
-    <div>
-      <div className="flex flex-col items-center text-center text-white bg-black py-5 w-5/6 mx-auto rounded">
+    <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col items-center text-center text-white bg-black py-5 w-5/6 mx-auto rounded mt-5">
         <header>
           <h1 className="text-5xl font-bold header">Axios Report</h1>
           <h2 className="pt-2 text-2xl casual">Axios vs Fetch</h2>
@@ -57,12 +86,16 @@ function App() {
         </div>
         <div className="flex flex-col items-center text-center">
           <h2 className="text-2xl font-bold header">Fetch</h2>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping">Send GET request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping">Send POST request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping" onClick={FetchGet}>Send GET request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping" onClick={FetchPost}>Send POST request</button>
           <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping">Send DELETE request</button>
           <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping">Send PATCH request</button>
         </div>
       </div>
+      <div className="flex flex-col text-center text-white bg-black py-5 w-5/6 mx-auto rounded mt-auto mb-5">
+        <div className="pl-10 casual">by Anton Podkur, IV-92</div> 
+      </div>
+      
     </div>
   );
 }
