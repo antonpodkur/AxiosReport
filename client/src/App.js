@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {useState, UseEffect} from 'react';
+import {useState} from 'react';
 
 import './App.css';
 
@@ -109,6 +109,14 @@ function App() {
   };
 
 
+  async function DownloadFile(){
+    try{
+      const response = await axios.get('http://localhost:3333/files/getTest2')
+      console.log(response);
+      window.open('http://localhost:3333/files/getFile');
+    }catch(e){console.error(e.message)}
+  }
+
 
 
   return (
@@ -145,7 +153,8 @@ function App() {
         </div>
       </div>
 
-      <button className="w-1/4 py-3 mb-10 text-white bg-black font-bold rounded-xl casual jumping mx-auto">
+      <button className="w-1/4 py-3 mb-10 text-white bg-black font-bold rounded-xl casual jumping mx-auto"
+      onClick={DownloadFile}>
         Get File
       </button>
       

@@ -20,14 +20,16 @@ app.use(express.json());
 // Import routes
 const postsRoute = require('./routes/posts');
 
+const filesRoute = require('./routes/files');
+
 app.use('/posts', postsRoute);
+app.use('/files', filesRoute);
 
 
 // Routes
 app.get('/', (req, res) => {
     res.send('We are on home');
 });
-
 
 // Connect to db
 mongoose.connect(process.env.DB_CONNECTION,
