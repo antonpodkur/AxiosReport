@@ -27,13 +27,17 @@ function App() {
       const post = {title: 'axios test post', description: 'axios test post. I hope it was sent successfuly'};
       const result = await axios.post('http://localhost:3333/posts/', post);
       console.log(result.data);
+      setType('Axios/POST');
+      setText(JSON.stringify(result.data, null, 2));
     }catch(e){console.error(e.message)}
   };
 
   async function AxiosDelete(){
     try{
-      const result = await axios.delete('http://localhost:3333/posts/60895307176b2140ec1b9c88')
+      const result = await axios.delete('http://localhost:3333/posts/60897587176b2140ec1b9c8d')
       console.log(result.data);
+      setType('Axios/Delete');
+      setText(JSON.stringify(result.data, null, 2));
     }catch(e) {console.error(e.message)}
   };
 
@@ -41,6 +45,8 @@ function App() {
     try{
       const result = await axios.patch('http://localhost:3333/posts/60896930176b2140ec1b9c8c',{title:'Whoops it is not the last one2 '});
       console.log(result.data);
+      setType('Axios/Patch');
+      setText(JSON.stringify(result.data, null, 2));
     }
     catch(e) {console.error(e.message)}
   };
@@ -53,6 +59,8 @@ function App() {
       const response = await fetch('http://localhost:3333/posts/');
       const data = await response.json();
       console.log(data);
+      setType('Fetch/Get');
+      setText(JSON.stringify(data, null, 2));
     }catch(e){
       console.log(e.message);
     }
@@ -68,21 +76,25 @@ function App() {
         }    
       });
       const json = await response.json();
+      setType('Fetch/Post');
+      setText(JSON.stringify(json, null, 2));
       console.log(json);
     }catch(e) {console.error(e.message)}
   }
 
   async function FetchDelete(){
     try{
-      const response = await fetch('http://localhost:3333/posts/60895c73176b2140ec1b9c8a',{method:'DELETE'});
+      const response = await fetch('http://localhost:3333/posts/60896930176b2140ec1b9c8c',{method:'DELETE'});
       const json = await response.json();
       console.log(json);
+      setType('Fetch/Delete');
+      setText(JSON.stringify(json, null, 2));
     }catch(e){console.error(e.message)}
   }
 
   async function FetchPatch(){
     try{
-      const response = await fetch('http://localhost:3333/posts/60896930176b2140ec1b9c8c',{
+      const response = await fetch('http://localhost:3333/posts/608976e1176b2140ec1b9c8e',{
         method: 'PATCH',
         body: JSON.stringify({title:'Whoops it is not the last one'}),
         headers:{
@@ -91,6 +103,8 @@ function App() {
       });
       const json = await response.json();
       console.log(json);
+      setType('Fetch/Patch');
+      setText(JSON.stringify(json, null, 2));
     }catch(e){console.error(e.message)}
   };
 
