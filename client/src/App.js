@@ -84,7 +84,7 @@ function App() {
 
   async function FetchDelete(){
     try{
-      const response = await fetch('http://localhost:3333/posts/60896930176b2140ec1b9c8c',{method:'DELETE'});
+      const response = await fetch('http://localhost:3333/posts/60898491176b2140ec1b9c90',{method:'DELETE'});
       const json = await response.json();
       console.log(json);
       setType('Fetch/Delete');
@@ -144,6 +144,10 @@ function App() {
         <pre>{text}</pre>
         </div>
       </div>
+
+      <button className="w-1/4 py-3 mb-10 text-white bg-black font-bold rounded-xl casual jumping mx-auto">
+        Get File
+      </button>
       
       <div className="flex flex-col text-center text-white bg-black py-5 w-5/6 mx-auto rounded mt-auto mb-5">
         <div className="pl-10 casual text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500">by Anton Podkur, IV-92</div> 
