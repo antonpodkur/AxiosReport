@@ -84,7 +84,7 @@ function App() {
 
   async function FetchDelete(){
     try{
-      const response = await fetch('http://localhost:3333/posts/60898491176b2140ec1b9c90',{method:'DELETE'});
+      const response = await fetch('http://localhost:3333/posts/60898d1a176b2140ec1b9c91',{method:'DELETE'});
       const json = await response.json();
       console.log(json);
       setType('Fetch/Delete');

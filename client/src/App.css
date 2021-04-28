@@ -21,3 +21,7 @@
 .jumping:hover {
   transform: translateY(-5px);
 }
+
+button:hover {
+  
+}
