@@ -50,17 +50,17 @@ function App() {
       <div className="pt-20 grid grid-cols-2">
         <div className="flex flex-col items-center text-center">
           <h2 className="text-2xl font-bold header">Axios</h2>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual" onClick={AxiosGet}>Send GET request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual" onClick={AxiosPost}>Send POST request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual" onClick={AxiosDelete}>Send DELETE request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual" onClick={AxiosPatch}>Send PATCH request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping" onClick={AxiosGet}>Send GET request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping" onClick={AxiosPost}>Send POST request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping" onClick={AxiosDelete}>Send DELETE request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping" onClick={AxiosPatch}>Send PATCH request</button>
         </div>
         <div className="flex flex-col items-center text-center">
           <h2 className="text-2xl font-bold header">Fetch</h2>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual">Send GET request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual">Send POST request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual">Send DELETE request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual">Send PATCH request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping">Send GET request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping">Send POST request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping">Send DELETE request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded casual jumping">Send PATCH request</button>
         </div>
       </div>
     </div>
