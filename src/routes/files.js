@@ -5,7 +5,7 @@ const fs = require('fs');
 const FileDownload = require('js-file-download');
 const mime = require('mime');
 
-const url = 'https://unsplash.com/photos/j0D2YkhaoN4/download?force=true';
+const url = 'https://unsplash.com/photos/a-0X2yc3vVM/download?force=true';
 const pathToFile = path.resolve(__dirname, '../files', 'image.jpg');
 
 async function download(url, path){
