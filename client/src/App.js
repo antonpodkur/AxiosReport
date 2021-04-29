@@ -84,7 +84,7 @@ function App() {
 
   async function FetchDelete(){
     try{
-      const response = await fetch('http://localhost:3333/posts/608a675cb682ac0c1ff08a8b',{method:'DELETE'});
+      const response = await fetch('http://localhost:3333/posts/608a71ae9c14ea0de7038677',{method:'DELETE'});
       const json = await response.json();
       console.log(json);
       setType('Fetch/Delete');
@@ -113,7 +113,7 @@ function App() {
     try{
       const response = await axios.get('http://localhost:3333/files/getTest2')
       console.log(response);
-      window.open('http://localhost:3333/files/getFile');
+      window.open(`http://localhost:3333/files/getFile`);
     }catch(e){console.error(e.message)}
   }
 
