@@ -1,12 +1,7 @@
-# software_engineering_template
+# Axios Report
 
-Шаблон репозиторію для виконання курсової роботи з курсу "Інженерія ПЗ"
+### UA
+Проект для демонстрації основних можливостей бібліотеки axios та порівняння її з вбудованим в javascript fetch.
 
-*Необхідно зробити ```fork``` цього репозіторію, склонувати вже власний репозіторій та розміщувати матеріали у відповідних діректоріях. 
-В цьому файлі необхідно вказати назву проекту (тему курсової роботи). Коротку загальну характеристику
-проекту, контактні дані виконавців.*
-
-
-[Методичні вказівки](https://jace-dev.herokuapp.com/design/js-talks#/)
-
-[Звітність](https://drive.google.com/file/d/1A5Pxqb0Esy78t9xhMlkWzzx4chdkXAl2/view?usp=sharing)
+### US
+A project to demonstrate the main features of the axios library and compare it with the built-in javascript fetch.
