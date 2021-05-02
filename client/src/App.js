@@ -8,6 +8,7 @@ function App() {
 
   const [type, setType] = useState('Choose something :-)');
   const [text, setText] = useState(undefined);
+  const [id, setId] = useState('');
 
   // Axios request functions
 
@@ -34,7 +35,8 @@ function App() {
 
   async function AxiosDelete(){
     try{
-      const result = await axios.delete('http://localhost:3333/posts/60897587176b2140ec1b9c8d')
+      const result = await axios.delete(`http://localhost:3333/posts/${id}`)
+      setId('');
       console.log(result.data);
       setType('Axios/Delete');
       setText(JSON.stringify(result.data, null, 2));
@@ -43,7 +45,8 @@ function App() {
 
   async function AxiosPatch(){
     try{
-      const result = await axios.patch('http://localhost:3333/posts/60896930176b2140ec1b9c8c',{title:'Whoops it is not the last one2 '});
+      const result = await axios.patch(`http://localhost:3333/posts/${id}`,{title:'Whoops it is not the last one2 '});
+      setId('');
       console.log(result.data);
       setType('Axios/Patch');
       setText(JSON.stringify(result.data, null, 2));
@@ -84,7 +87,8 @@ function App() {
 
   async function FetchDelete(){
     try{
-      const response = await fetch('http://localhost:3333/posts/608a71ae9c14ea0de7038677',{method:'DELETE'});
+      const response = await fetch(`http://localhost:3333/posts/${id}`,{method:'DELETE'});
+      setId('');
       const json = await response.json();
       console.log(json);
       setType('Fetch/Delete');
@@ -94,13 +98,14 @@ function App() {
 
   async function FetchPatch(){
     try{
-      const response = await fetch('http://localhost:3333/posts/608976e1176b2140ec1b9c8e',{
+      const response = await fetch(`http://localhost:3333/posts/${id}`,{
         method: 'PATCH',
         body: JSON.stringify({title:'Whoops it is not the last one'}),
         headers:{
           'Content-type': 'application/json; charset=UTF-8'
         }
       });
+      setId('');
       const json = await response.json();
       console.log(json);
       setType('Fetch/Patch');
@@ -111,11 +116,12 @@ function App() {
 
   async function DownloadFile(){
     try{
-      const response = await axios.get('http://localhost:3333/files/getTest2')
-      console.log(response);
       window.open(`http://localhost:3333/files/getFile`);
     }catch(e){console.error(e.message)}
   }
+
+
+  const handleChange = (event) => setId(event.target.value);
 
 
 
@@ -131,19 +137,24 @@ function App() {
       <div className="pt-20 grid grid-cols-2">
         <div className="flex flex-col items-center text-center">
           <h2 className="text-2xl font-bold header">Axios</h2>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl casual jumping" onClick={AxiosGet}>Send GET request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl casual jumping" onClick={AxiosPost}>Send POST request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl casual jumping" onClick={AxiosDelete}>Send DELETE request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl casual jumping" onClick={AxiosPatch}>Send PATCH request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl focus:outline-none casual jumping" onClick={AxiosGet}>Send GET request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl focus:outline-none casual jumping" onClick={AxiosPost}>Send POST request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl focus:outline-none casual jumping" onClick={AxiosDelete}>Send DELETE request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl focus:outline-none casual jumping" onClick={AxiosPatch}>Send PATCH request</button>
         </div>
         <div className="flex flex-col items-center text-center">
           <h2 className="text-2xl font-bold header">Fetch</h2>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl casual jumping" onClick={FetchGet}>Send GET request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl casual jumping" onClick={FetchPost}>Send POST request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl casual jumping" onClick={FetchDelete}>Send DELETE request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl casual jumping" onClick={FetchPatch}>Send PATCH request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl focus:outline-none casual jumping" onClick={FetchGet}>Send GET request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl focus:outline-none casual jumping" onClick={FetchPost}>Send POST request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl focus:outline-none casual jumping" onClick={FetchDelete}>Send DELETE request</button>
+          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl focus:outline-none casual jumping" onClick={FetchPatch}>Send PATCH request</button>
         </div>
       </div>
+
+      <div className="mx-auto pt-2" >
+        <input type="text" placeholder="id" value={id} className="rounded-xl bg-black text-white outline-none border-2 border-black px-2 py-1 casual font-bold" onChange={handleChange}/>
+      </div>
+
       <div className="flex flex-col items-center w-5/6 text-white bg-black mx-auto my-10 rounded-xl ">
         <div className="pt-5 font-bold text-xl">
           {type}
@@ -153,7 +164,7 @@ function App() {
         </div>
       </div>
 
-      <button className="w-1/4 py-3 mb-10 text-white bg-black font-bold rounded-xl casual jumping mx-auto"
+      <button className="w-1/4 py-3 mb-10 text-white bg-black font-bold rounded-xl focus:outline-none casual jumping mx-auto"
       onClick={DownloadFile}>
         Get File
       </button>
