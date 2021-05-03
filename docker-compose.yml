@@ -1,14 +1,14 @@
 version: "3"
 services: 
     react-app:
-        image: react-axios-report
+        image: antonpodkur/react-axios-report
         stdin_open: true
         ports: 
             - "3000:3000"
         depends_on: 
             - api-server
     api-server:
-        image: api-axios-report
+        image: antonpodkur/api-axios-report
         ports: 
             - "3333:3333"
     
