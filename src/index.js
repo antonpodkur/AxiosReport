@@ -18,9 +18,9 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // Import routes
-const postsRoute = require('./routes/posts');
+const postsRoute = require('./routes/posts.js');
 
-const filesRoute = require('./routes/files');
+const filesRoute = require('./routes/files.js');
 
 app.use('/posts', postsRoute);
 app.use('/files', filesRoute);
@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 });
 
 // Connect to db
-mongoose.connect(process.env.DB_CONNECTION,
+mongoose.connect('mongodb+srv://Anton:axiospassword@axiosdb.juupn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
 { 
     useNewUrlParser: true,
     useUnifiedTopology: true 
@@ -40,6 +40,6 @@ mongoose.connect(process.env.DB_CONNECTION,
     console.log('Connected to db');
 });
 
-app.listen(PORT, () => {
+app.listen(PORT,"0.0.0.0", () => {
     console.log(`Server is up and running on port ${PORT}`);
 });

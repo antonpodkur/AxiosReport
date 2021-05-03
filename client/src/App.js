@@ -152,7 +152,7 @@ function App() {
       </div>
 
       <div className="mx-auto pt-2" >
-        <input type="text" placeholder="id" value={id} className="rounded-xl bg-black text-white outline-none border-2 border-black px-2 py-1 casual font-bold" onChange={handleChange}/>
+        <input type="text" placeholder="id:" value={id} className="rounded-xl bg-black text-white outline-none border-2 border-black px-2 py-1 casual font-bold" onChange={handleChange}/>
       </div>
 
       <div className="flex flex-col items-center w-5/6 text-white bg-black mx-auto my-10 rounded-xl ">
