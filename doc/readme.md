@@ -15,7 +15,7 @@ Axios це один з найпопулярніших HTTP клієнтів дл
 
 Все, бібліотека готова до використання
 
-## Надсилання запитів
+## Надсилання HTTP запитів використовуючи Axios
 
 ### Надсилання Get запиту
 
@@ -84,6 +84,45 @@ async function AxiosPatch(){
 ```
 
 Так як і в запиті Delete - перший параметр - це URL-адреса, на яку буде зроблений запит. Але тут з'являється другий параметр - це дані, які ви будете відправляти для зміни.
+
+###  Axios може отримувати контент різного типу. Використовуючи цю бібліотеку можна, наприклад, завантажувати файли.
+
+```
+async function download(url, path){
+    const response = await axios({
+        method: 'GET',
+        url: url,
+        responseType: 'stream'
+    });
+    
+    response.data.pipe(fs.createWriteStream(path))
+
+    return new Promise((resolve, reject) => {
+        response.data.on('end', ()=> {
+            resolve();
+        });
+
+        response.data.on('error', err=>{
+            reject(err);
+        });
+    });  
+}
+```
+
+Ця функція виконує запит типу Get по даній Url. Так як файл може бути різного розміру, ми вказуємо його тип як stream. Після отримання ми його "pipe-им" в WriteStream (потік запису).
+
+#### Використання даної функції
+
+```
+router.get('/getFile', async (req, res) => {
+    await download(url, pathToFile);
+    res.download(pathToFile, 'image.jpg');
+});
+```
+
+Тут ми використовуємо нашу функцію для завантаження файлу на сервер. Потім ми можему ним якось маніпулювати. В даному разі ми надсилаємо файл на клієнт.
+
+
 
 
 
