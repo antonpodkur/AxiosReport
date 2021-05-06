@@ -219,6 +219,11 @@ async function FetchPatch(){
 ### Дякую за увагу!
 
 
+### [Автор](https://github.com/antonpodkur)
+### [Проект](https://github.com/antonpodkur/AxiosReport)
+
+
+
 
 
 
