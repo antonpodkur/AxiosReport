@@ -19,7 +19,7 @@ Axios це один з найпопулярніших HTTP клієнтів дл
 
 ### Надсилання Get запиту
 
-`
+```
 async function AxiosGet(){
     try {
       const res = await axios.get('http://localhost:3333/posts/')
@@ -28,7 +28,7 @@ async function AxiosGet(){
       console.error(e.message);
     }
   };
-`
+```
 
 Ми використовуємо axios.get (url) з URL від кінцевої точки API, щоб отримати проміс, який повертає об'єкт відповіді. Усередині об'єкту відповіді є дані, які ми виводимо.
 
@@ -37,7 +37,7 @@ async function AxiosGet(){
 
 ### Надсилання Post запиту
 
-`
+```
 async function AxiosPost(){
     try{
       const post = {title: 'axios test post', description: 'axios test post. I hope it was sent successfuly'};
@@ -47,7 +47,7 @@ async function AxiosPost(){
         console.error(e.message)
         }
   };
-`
+```
 
 Використання POST дає той же об'єкт відповіді з інформацією, яку ви зможете використовувати.
 
@@ -55,7 +55,7 @@ async function AxiosPost(){
 
 ### Надсилання Delete запиту
 
-`
+```
 async function AxiosDelete(){
     try{
       const result = await axios.delete(`http://localhost:3333/posts/${id}`)
@@ -64,14 +64,14 @@ async function AxiosDelete(){
         console.error(e.message)
         }
   };
-`
+```
 В цьому разі до нашого запиту додався парамет id. Він слугує для ідентифікації об'єкта, який буде видалений.
 
 У цьому випадку об'єкт result надає інформацію про запит. Потім ви можете знову використовувати console.log для цієї інформації після відправки форми.
 
 ### Надсилання Patch запиту
 
-`
+```
 async function AxiosPatch(){
     try{
       const result = await axios.patch(`http://localhost:3333/posts/${id}`,{title:'Whoops it is not the last one2 '});
@@ -81,7 +81,7 @@ async function AxiosPatch(){
         console.error(e.message)
         }
   };
-`
+```
 
 Так як і в запиті Delete - перший параметр - це URL-адреса, на яку буде зроблений запит. Але тут з'являється другий параметр - це дані, які ви будете відправляти для зміни.
 
