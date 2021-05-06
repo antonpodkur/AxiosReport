@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 });
 
 // Connect to db
-mongoose.connect('mongodb+srv://Anton:axiospassword@axiosdb.juupn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect(process.env.DB_CONNECTION,
 { 
     useNewUrlParser: true,
     useUnifiedTopology: true 
