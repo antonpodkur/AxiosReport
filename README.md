@@ -44,3 +44,4 @@ services:
 
 ### Доповідь можете знайти [тут](https://github.com/antonpodkur/AxiosReport/blob/master/doc/readme.md)
 ### [Проект](https://github.com/antonpodkur/AxiosReport)
+### [AxiosReport deployed](https://axios-report.herokuapp.com/)
