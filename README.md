@@ -37,9 +37,9 @@ services:
 1. Склонувати проект - `git clone https://github.com/antonpodkur/AxiosReport.git`
 2. Зайти в проект - `cd AxiosReport`
 3. Встановити залежності:
-`cd src && npm i`
+`cd server && npm i`
 `cd ../client && npm i`
-4. Запустити сервер - `cd src && npm start`
+4. Запустити сервер - `cd server && npm start`
 5. Запустити клієнт - `cd client && npm start`
 
 ### Доповідь можете знайти [тут](https://github.com/antonpodkur/AxiosReport/blob/master/doc/readme.md)
