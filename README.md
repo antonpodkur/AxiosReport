@@ -12,7 +12,7 @@
 sudo docker pull antonpodkur/api-axios-report
 sudo docker pull antonpodkur/react-axios-report
 ```
-5. Встановити docker-docker compose (Ubuntu - `sudo apt install docker-compose`)
+5. Встановити docker-compose (Ubuntu - `sudo apt install docker-compose`)
 6. Створити файл `docker-compose.yml`
 7. Вставити в нього наступний текст:
 ```
