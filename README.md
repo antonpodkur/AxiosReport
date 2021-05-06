@@ -1,4 +1,6 @@
 # Axios Report
+### Проект для демонстрації основних можливостей бібліотеки axios та порівняння її з вбудованим в javascript fetch.
+
 ## Встановлення
 
 ### 1. Docker
@@ -31,9 +33,13 @@ services:
 ```
 8. Запустити проект (Linux, MacOs - `sudo docker-compose up`, Windows - `docker-compose up`)
 
-## About
-### UA
-Проект для демонстрації основних можливостей бібліотеки axios та порівняння її з вбудованим в javascript fetch.
+### 2. Node
+1. Склонувати проект - `git clone https://github.com/antonpodkur/AxiosReport.git`
+2. Зайти в проект - `cd AxiosReport`
+3. Встановити залежності:
+`cd src && npm i`
+`cd ../client && npm i`
+4. Запустити сервер - `cd src && npm start`
+5. Запустити клієнт - `cd client && npm start`
 
-### US
-A project to demonstrate the main features of the axios library and compare it with the built-in javascript fetch.
+
