@@ -15,9 +15,9 @@ Axios це один з найпопулярніших HTTP клієнтів дл
 
 Все, бібліотека готова до використання
 
-## Надсилання HTTP запитів використовуючи Axios
+## Надсилання HTTP-запитів використовуючи Axios
 
-### Надсилання Get запиту
+### Надсилання Get-запиту
 
 ```
 async function AxiosGet(){
@@ -35,7 +35,7 @@ async function AxiosGet(){
 Також ви можете отримати і іншу інформацію про запит, в тому числі код стану res.status, або додаткову інформацію всередині res.request.
 
 
-### Надсилання Post запиту
+### Надсилання Post-запиту
 
 ```
 async function AxiosPost(){
@@ -53,7 +53,7 @@ async function AxiosPost(){
 
 Щоб виконати запит POST, ми спочатку захоплюємо введення aбо створюємо (як в нашому разі) об'єкт, який будемо надсилати. Потім ми додаємо введення разом із запитом POST і отримуємо відповідь.
 
-### Надсилання Delete запиту
+### Надсилання Delete-запиту
 
 ```
 async function AxiosDelete(){
@@ -69,7 +69,7 @@ async function AxiosDelete(){
 
 У цьому випадку об'єкт result надає інформацію про запит. Потім ви можете знову використовувати console.log для цієї інформації після відправки форми.
 
-### Надсилання Patch запиту
+### Надсилання Patch-запиту
 
 ```
 async function AxiosPatch(){
@@ -121,6 +121,105 @@ router.get('/getFile', async (req, res) => {
 ```
 
 Тут ми використовуємо нашу функцію для завантаження файлу на сервер. Потім ми можему ним якось маніпулювати. В даному разі ми надсилаємо файл на клієнт.
+
+
+# Тепер час його основного конкурента - Fetch.
+
+Fetch API - це сучасний інтерфейс, який дозволяє робити HTTP-запити на сервери з сучасних веб-браузерів.
+
+## Надсилання HTTP-запитів за допомогою Fetch
+
+### Надсилання Get-запиту
+
+
+```
+async function FetchGet(){
+    try{
+      const response = await fetch('http://localhost:3333/posts/');
+      const data = await response.json();
+      console.log(data);
+    }catch(e){
+      console.log(e.message);
+    }
+  };
+```
+
+Відповідь на запит fetch() є об’єктом Stream, що означає, що коли ми викликаємо метод json(), повертається Promise, оскільки зчитування потоку відбуватиметься асинхронно.
+
+### Надсилання Post-запиту
+
+```
+async function FetchPost(){
+    try{
+      const response = await fetch('http://localhost:3333/posts/', {
+        method: 'POST',
+        body: JSON.stringify({title: 'axios test post', description: 'axios test post. I hope it was sent successfuly'}), 
+        headers: {
+          'Content-Type': 'application/json'
+        }    
+      });
+      const json = await response.json();
+      console.log(json);
+    }catch(e) {
+        console.error(e.message)
+        }
+  }
+```
+
+Для надсилання цього запиту потрібно встановити метод і параметри тіла в параметрах fetch() в другому параметрі який є об'єктом.
+Використання POST дає той же об'єкт відповіді з інформацією, яку ви зможете використовувати.
+
+### Надсилання Delete-запиту
+
+```
+async function FetchDelete(){
+    try{
+      const response = await fetch(`http://localhost:3333/posts/${id}`,{method:'DELETE'});
+      const json = await response.json();
+      console.log(json);
+    }catch(e){
+        console.error(e.message)
+        }
+  }
+```
+
+В цьому разі до нашого запиту додався парамет id. Він слугує для ідентифікації об'єкта, який буде видалений.
+Так як і в зпиту типу Post, другим параметром іде об'єкт, в якому вказуємо тип запиту.
+
+У цьому випадку об'єкт response надає інформацію про запит. Потім ви можете знову використовувати console.log для цієї інформації після відправки форми.
+
+### Надсилання Path-запиту
+
+```
+async function FetchPatch(){
+    try{
+      const response = await fetch(`http://localhost:3333/posts/${id}`,{
+        method: 'PATCH',
+        body: JSON.stringify({title:'Whoops it is not the last one'}),
+        headers:{
+          'Content-type': 'application/json; charset=UTF-8'
+        }
+      });
+      const json = await response.json();
+      console.log(json);
+    }catch(e){
+        console.error(e.message)
+        }
+  };
+```
+
+Запит Patch дуже схожий на запит Post. Відмінність в тому що тут ми вказуємо id того об'єта, який хочемо змінити. В тіло запиту ми передаємо об'єкт, в якому вказано на що ми будемо замінювати.
+
+## Звісно тут не преречислені всі можливості цих двох бібліотек, адже обидві вони дуже масштабні та функціональнію.
+## Порівнявши їх, можемо зробити висновок, що вони дуже схожі і різні одночасно. В кожної є своє поле для використання. Axios - стороння бібліотека, але надзвичайно потужна та працює як на стороні сервера, так і на стороні клієнта. Fetch - вбудована, також дуже потужна та функціональна, використовується на стороні клієнта.
+## Знаючи хоча б одну з них, не виникне проблем у використанні іншої
+
+# Дякую за увагу!
+
+
+
+
+
 
 
 
