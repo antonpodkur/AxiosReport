@@ -14,7 +14,7 @@ function App() {
 
   async function AxiosGet(){
     try {
-      const data = await axios.get('http://localhost:3333/posts/')
+      const data = await axios.get(`${window.location}posts/`)
       console.log(data.data);
       setType('Axios/Get');
       setText(JSON.stringify(data.data, null, 2));
@@ -26,7 +26,7 @@ function App() {
   async function AxiosPost(){
     try{
       const post = {title: 'axios test post', description: 'axios test post. I hope it was sent successfuly'};
-      const result = await axios.post('http://localhost:3333/posts/', post);
+      const result = await axios.post(`${window.location}posts/`, post);
       console.log(result.data);
       setType('Axios/POST');
       setText(JSON.stringify(result.data, null, 2));
@@ -35,7 +35,7 @@ function App() {
 
   async function AxiosDelete(){
     try{
-      const result = await axios.delete(`http://localhost:3333/posts/${id}`)
+      const result = await axios.delete(`${window.location}posts/${id}`)
       setId('');
       console.log(result.data);
       setType('Axios/Delete');
@@ -45,7 +45,7 @@ function App() {
 
   async function AxiosPatch(){
     try{
-      const result = await axios.patch(`http://localhost:3333/posts/${id}`,{title:'Whoops it is not the last one2 '});
+      const result = await axios.patch(`${window.location}posts/${id}`,{title:'Whoops it is not the last one2 '});
       setId('');
       console.log(result.data);
       setType('Axios/Patch');
@@ -59,7 +59,7 @@ function App() {
 
   async function FetchGet(){
     try{
-      const response = await fetch('http://localhost:3333/posts/');
+      const response = await fetch(`${window.location}posts/`);
       const data = await response.json();
       console.log(data);
       setType('Fetch/Get');
@@ -71,7 +71,7 @@ function App() {
 
   async function FetchPost(){
     try{
-      const response = await fetch('http://localhost:3333/posts/', {
+      const response = await fetch(`${window.location}posts/`, {
         method: 'POST',
         body: JSON.stringify({title: 'axios test post', description: 'axios test post. I hope it was sent successfuly'}), 
         headers: {
@@ -87,7 +87,7 @@ function App() {
 
   async function FetchDelete(){
     try{
-      const response = await fetch(`http://localhost:3333/posts/${id}`,{method:'DELETE'});
+      const response = await fetch(`${window.location}posts/${id}`,{method:'DELETE'});
       setId('');
       const json = await response.json();
       console.log(json);
@@ -98,7 +98,7 @@ function App() {
 
   async function FetchPatch(){
     try{
-      const response = await fetch(`http://localhost:3333/posts/${id}`,{
+      const response = await fetch(`${window.location}posts/${id}`,{
         method: 'PATCH',
         body: JSON.stringify({title:'Whoops it is not the last one'}),
         headers:{
@@ -116,7 +116,7 @@ function App() {
 
   async function DownloadFile(){
     try{
-      window.open(`http://localhost:3333/files/getFile`);
+      window.open(`${window.location}files/getFile`);
     }catch(e){console.error(e.message)}
   }
 
