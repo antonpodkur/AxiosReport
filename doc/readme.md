@@ -39,7 +39,7 @@ async function AxiosGet(){
 
 ### Надсилання Post-запиту
 
-```
+```js
 async function AxiosPost(){
     try{
       const post = {title: 'axios test post', description: 'axios test post. I hope it was sent successfuly'};
@@ -57,7 +57,7 @@ async function AxiosPost(){
 
 ### Надсилання Delete-запиту
 
-```
+```js
 async function AxiosDelete(){
     try{
       const result = await axios.delete(`http://localhost:3333/posts/${id}`)
@@ -73,7 +73,7 @@ async function AxiosDelete(){
 
 ### Надсилання Patch-запиту
 
-```
+```js
 async function AxiosPatch(){
     try{
       const result = await axios.patch(`http://localhost:3333/posts/${id}`,{title:'Whoops it is not the last one2 '});
@@ -89,7 +89,7 @@ async function AxiosPatch(){
 
 ###  Axios може отримувати контент різного типу. Використовуючи цю бібліотеку можна, наприклад, завантажувати файли.
 
-```
+```js
 async function download(url, path){
     const response = await axios({
         method: 'GET',
@@ -115,7 +115,7 @@ async function download(url, path){
 
 #### Використання даної функції
 
-```
+```js
 router.get('/getFile', async (req, res) => {
     await download(url, pathToFile);
     res.download(pathToFile, 'image.jpg');
@@ -134,7 +134,7 @@ Fetch API - це сучасний інтерфейс, який дозволяє 
 ### Надсилання Get-запиту
 
 
-```
+```js
 async function FetchGet(){
     try{
       const response = await fetch('http://localhost:3333/posts/');
@@ -150,7 +150,7 @@ async function FetchGet(){
 
 ### Надсилання Post-запиту
 
-```
+```js
 async function FetchPost(){
     try{
       const response = await fetch('http://localhost:3333/posts/', {
@@ -173,7 +173,7 @@ async function FetchPost(){
 
 ### Надсилання Delete-запиту
 
-```
+```js
 async function FetchDelete(){
     try{
       const response = await fetch(`http://localhost:3333/posts/${id}`,{method:'DELETE'});
@@ -192,7 +192,7 @@ async function FetchDelete(){
 
 ### Надсилання Patch-запиту
 
-```
+```js
 async function FetchPatch(){
     try{
       const response = await fetch(`http://localhost:3333/posts/${id}`,{
