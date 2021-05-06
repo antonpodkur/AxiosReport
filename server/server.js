@@ -17,7 +17,11 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 
-app.use(express.static('../client/build'))
+
+if(process.env.NODE_ENV==='production') {
+    app.use(express.static('../client/build'))
+}
+
 
 // Import routes
 const postsRoute = require('./routes/posts.js');
