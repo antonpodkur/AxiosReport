@@ -11,7 +11,9 @@ Axios це один з найпопулярніших HTTP клієнтів дл
 ```npm i axios```
 
 Імпортуємо axios в компонент з якого будемо відправляти запити:
-```import axios from 'axios'```
+```js
+import axios from 'axios'
+```
 
 Все, бібліотека готова до використання
 
@@ -19,7 +21,7 @@ Axios це один з найпопулярніших HTTP клієнтів дл
 
 ### Надсилання Get-запиту
 
-```
+```js
 async function AxiosGet(){
     try {
       const res = await axios.get('http://localhost:3333/posts/')
