@@ -3,7 +3,7 @@
   "install-client": "cd client && npm i",
   "heroku-postbuild": "npm run install-client && npm run build",
   "start": "cd server && npm i && npm start",
-  "dev": "cd server && nodemon server.js"
+  "dev": "npm run build && npm start"
 },
   "dependencies": {
     "axios": "^0.21.1",

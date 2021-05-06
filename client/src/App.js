@@ -136,18 +136,18 @@ function App() {
 
       <div className="pt-20 grid grid-cols-2">
         <div className="flex flex-col items-center text-center">
-          <h2 className="text-2xl font-bold header">Axios</h2>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl focus:outline-none casual jumping" onClick={AxiosGet}>Send GET request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl focus:outline-none casual jumping" onClick={AxiosPost}>Send POST request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl focus:outline-none casual jumping" onClick={AxiosDelete}>Send DELETE request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl focus:outline-none casual jumping" onClick={AxiosPatch}>Send PATCH request</button>
+          <h2 className="text-xl sm:text-2xl font-bold header">Axios</h2>
+          <button className="w-1/2 sm:w-1/3 py-3 my-2 text-white text-sm sm:text-base bg-black rounded-xl focus:outline-none casual jumping" onClick={AxiosGet}>Send GET request</button>
+          <button className="w-1/2 sm:w-1/3 py-3 my-2 text-white text-sm sm:text-base bg-black rounded-xl focus:outline-none casual jumping" onClick={AxiosPost}>Send POST request</button>
+          <button className="w-1/2 sm:w-1/3 py-3 my-2 text-white text-sm sm:text-base bg-black rounded-xl focus:outline-none casual jumping" onClick={AxiosDelete}>Send DELETE request</button>
+          <button className="w-1/2 sm:w-1/3 py-3 my-2 text-white text-sm sm:text-base bg-black rounded-xl focus:outline-none casual jumping" onClick={AxiosPatch}>Send PATCH request</button>
         </div>
         <div className="flex flex-col items-center text-center">
-          <h2 className="text-2xl font-bold header">Fetch</h2>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl focus:outline-none casual jumping" onClick={FetchGet}>Send GET request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl focus:outline-none casual jumping" onClick={FetchPost}>Send POST request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl focus:outline-none casual jumping" onClick={FetchDelete}>Send DELETE request</button>
-          <button className="w-1/4 py-3 my-2 text-white bg-black rounded-xl focus:outline-none casual jumping" onClick={FetchPatch}>Send PATCH request</button>
+          <h2 className="text-xl sm:text-2xl font-bold header">Fetch</h2>
+          <button className="w-1/2 sm:w-1/3 py-3 my-2 text-white text-sm sm:text-base bg-black rounded-xl focus:outline-none casual jumping" onClick={FetchGet}>Send GET request</button>
+          <button className="w-1/2 sm:w-1/3 py-3 my-2 text-white text-sm sm:text-base bg-black rounded-xl focus:outline-none casual jumping" onClick={FetchPost}>Send POST request</button>
+          <button className="w-1/2 sm:w-1/3 py-3 my-2 text-white text-sm sm:text-base bg-black rounded-xl focus:outline-none casual jumping" onClick={FetchDelete}>Send DELETE request</button>
+          <button className="w-1/2 sm:w-1/3 py-3 my-2 text-white text-sm sm:text-base bg-black rounded-xl focus:outline-none casual jumping" onClick={FetchPatch}>Send PATCH request</button>
         </div>
       </div>
 
@@ -155,11 +155,11 @@ function App() {
         <input type="text" placeholder="id:" value={id} className="rounded-xl bg-black text-white outline-none border-2 border-black px-2 py-1 casual font-bold" onChange={handleChange}/>
       </div>
 
-      <div className="flex flex-col items-center w-5/6 text-white bg-black mx-auto my-10 rounded-xl ">
+      <div className="flex flex-col items-center w-full sm:w-5/6 text-white bg-black mx-auto my-10 rounded-xl ">
         <div className="pt-5 font-bold text-xl">
           {type}
         </div>
-        <div className="w-5/6 py-5 text-lg">
+        <div className="w-full sm:w-5/6 py-5 text-xs sm:text-lg">
         <pre>{text}</pre>
         </div>
       </div>
