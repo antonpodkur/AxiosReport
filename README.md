@@ -36,11 +36,7 @@ services:
 ### 2. Node
 1. Склонувати проект - `git clone https://github.com/antonpodkur/AxiosReport.git`
 2. Зайти в проект - `cd AxiosReport`
-3. Встановити залежності:
-`cd server && npm i`
-`cd ../client && npm i`
-4. Запустити сервер - `cd server && npm start`
-5. Запустити клієнт - `cd client && npm start`
+3. Запустити веб-додаток - `npm start`
 
 ### Доповідь можете знайти [тут](https://github.com/antonpodkur/AxiosReport/blob/master/doc/readme.md)
 ### [Проект](https://github.com/antonpodkur/AxiosReport)
