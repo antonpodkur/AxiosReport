@@ -4,6 +4,7 @@ const cors = require('cors');
 require('dotenv/config');
 
 const PORT = process.env.PORT || 3333;
+const ConnectionString = process.env.DB_CONNECTION || 'mongodb+srv://Anton:axiospassword@axiosdb.juupn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
 const app = express()
 
@@ -38,7 +39,7 @@ app.get('/', (req, res) => {
 });
 
 // Connect to db
-mongoose.connect(process.env.DB_CONNECTION,
+mongoose.connect(ConnectionString,
 { 
     useNewUrlParser: true,
     useUnifiedTopology: true 
