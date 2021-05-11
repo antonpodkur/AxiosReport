@@ -1,12 +1,12 @@
 { "scripts": {
-  "build": "cd client && npm run build",
-  "install-client": "cd client && npm i",
-  "heroku-postbuild": "npm run install-client && npm run build",
-  "start": "cd server && npm i && npm start",
-  "dev": "npm run build && npm start"
-},
-  "dependencies": {
-    "axios": "^0.21.1",
-    "js-file-download": "^0.4.12"
+    "build": "cd client && npm run build",
+    "install-client": "cd client && npm i",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "start": "cd server && npm i && npm start",
+    "dev": "npm run build && npm start"
+  },
+    "dependencies": {
+      "axios": "^0.21.1",
+      "js-file-download": "^0.4.12"
+    }
   }
-}
