@@ -16,6 +16,8 @@ COPY --from=server-build /usr/src/app/server ./server
 ENV DB_CONNECTION=mongodb+srv://Anton:axiospassword@axiosdb.juupn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
 ENV NODE_ENV=production
 
+RUN cat ./server/server.js
+
 EXPOSE 3333
 
 CMD ["node", "./server/server.js"]
