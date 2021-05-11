@@ -1,3 +1,8 @@
+/**
+ * @module server
+ * @file server.js
+ */
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -25,9 +30,15 @@ if(process.env.NODE_ENV==='production') {
 }
 
 
-// Import routes
+
+/**
+ * importing post route 
+ */
 const postsRoute = require('./routes/posts.js');
 
+/**
+ *  importing files route
+ */
 const filesRoute = require('./routes/files.js');
 
 app.use('/posts', postsRoute);
@@ -39,7 +50,9 @@ app.get('/', (req, res) => {
     res.send('We are on home');
 });
 
-// Connect to db
+/**
+ * Connecting to the DB
+ */
 mongoose.connect(ConnectionString,
 { 
     useNewUrlParser: true,

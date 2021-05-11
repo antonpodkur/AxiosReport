@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
 
+/**
+ * @module server
+ */
 
+/**
+ * Post schema to use in mongoose
+ * @type {mongoose.Schema}
+ */
 const PostSchema  = mongoose.Schema({
     title: {
         type: String,
